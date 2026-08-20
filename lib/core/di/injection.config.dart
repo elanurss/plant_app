@@ -16,6 +16,8 @@ import 'package:plant_app/app/router/guards/onboarding_guard.dart' as _i993;
 import 'package:plant_app/core/di/injection.dart' as _i433;
 import 'package:plant_app/core/network/dio_client.dart' as _i747;
 import 'package:plant_app/core/storage/onboarding_storage.dart' as _i321;
+import 'package:plant_app/features/onboarding/presentation/cubit/onboarding_cubit.dart'
+    as _i672;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -26,6 +28,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final appModule = _$AppModule();
+    gh.factory<_i672.OnboardingCubit>(() => _i672.OnboardingCubit());
     gh.lazySingleton<_i460.SharedPreferencesAsync>(() => appModule.preferences);
     gh.lazySingleton<_i747.DioClient>(() => appModule.dioClient);
     gh.lazySingleton<_i321.OnboardingStorage>(
