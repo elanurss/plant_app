@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/onboarding/presentation/pages/onboarding_page.dart';
+import '../../features/onboarding/presentation/pages/welcome_page.dart';
 import '../../features/paywall/presentation/pages/paywall_page.dart';
 import 'guards/onboarding_guard.dart';
 
@@ -18,10 +19,11 @@ class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
     AutoRoute(
-      page: OnboardingRoute.page,
+      page: WelcomeRoute.page,
       initial: true,
       guards: [_onboardingGuard],
     ),
+    AutoRoute(page: OnboardingRoute.page),
     AutoRoute(page: PaywallRoute.page),
     AutoRoute(page: HomeRoute.page),
   ];

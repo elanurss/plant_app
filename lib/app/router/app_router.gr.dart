@@ -57,3 +57,19 @@ class PaywallRoute extends PageRouteInfo<void> {
     },
   );
 }
+
+/// generated route for
+/// [WelcomePage]
+class WelcomeRoute extends PageRouteInfo<void> {
+  const WelcomeRoute({List<PageRouteInfo>? children})
+    : super(WelcomeRoute.name, initialChildren: children);
+
+  static const String name = 'WelcomeRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const WelcomePage();
+    },
+  );
+}
