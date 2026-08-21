@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
@@ -18,21 +20,21 @@ class DioClient {
           status != null && status >= 200 && status < 300,
     );
 
-    _dio.interceptors.add(ErrorInterceptor());
     if (kDebugMode) {
       _dio.interceptors.add(LoggingInterceptor());
     }
+    _dio.interceptors.add(ErrorInterceptor());
   }
 
   final Dio _dio;
 
-  Future<T> get<T>(
+  Future<Object> get(
     String path, {
     Map<String, dynamic>? queryParameters,
     CancelToken? cancelToken,
   }) async {
     try {
-      final response = await _dio.get<T>(
+      final response = await _dio.get<dynamic>(
         path,
         queryParameters: queryParameters,
         cancelToken: cancelToken,
@@ -42,9 +44,21 @@ class DioClient {
       if (data == null) {
         throw const ParsingException('Response body was empty.');
       }
-      return data;
+      return _decodeIfNeeded(data);
     } on DioException catch (error) {
       throw _unwrap(error);
+    }
+  }
+
+  Object _decodeIfNeeded(Object data) {
+    if (data is! String) {
+      return data;
+    }
+
+    try {
+      return jsonDecode(data) as Object;
+    } on FormatException {
+      throw const ParsingException('Response body was not valid JSON.');
     }
   }
 

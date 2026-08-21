@@ -26,7 +26,10 @@ class LoggingInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
     developer.log(
-      '<-- FAILED ${err.requestOptions.uri} :: ${err.error ?? err.message}',
+      '<-- FAILED ${err.requestOptions.uri}\n'
+      '    type: ${err.type}\n'
+      '    cause: ${err.error}\n'
+      '    message: ${err.message}',
       name: _channel,
     );
     handler.next(err);
