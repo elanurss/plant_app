@@ -6,11 +6,13 @@ class AdaptiveBody extends StatelessWidget {
   const AdaptiveBody({
     required this.child,
     this.maxWidth = AppSizes.maxContentWidth,
+    this.minComfortableHeight = AppSizes.minComfortableHeight,
     super.key,
   });
 
   final Widget child;
   final double maxWidth;
+  final double minComfortableHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,23 @@ class AdaptiveBody extends StatelessWidget {
       child: Center(
         child: ConstrainedBox(
           constraints: BoxConstraints(maxWidth: maxWidth),
-          child: child,
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxHeight >= minComfortableHeight) {
+                return child;
+              }
+
+              return SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: minComfortableHeight,
+                    maxHeight: minComfortableHeight,
+                  ),
+                  child: child,
+                ),
+              );
+            },
+          ),
         ),
       ),
     );
