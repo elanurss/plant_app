@@ -14,9 +14,9 @@ class HomeSkeleton extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
+          const Padding(
             padding: AppSpacing.screenPadding,
-            child: const SkeletonBox(height: AppSizes.bannerHeight),
+            child: SkeletonBox(height: AppSizes.bannerHeight),
           ),
           const SizedBox(height: AppSpacing.xl),
           SizedBox(
@@ -26,8 +26,7 @@ class HomeSkeleton extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               padding: AppSpacing.screenPadding,
               itemCount: 3,
-              separatorBuilder: (_, _) =>
-                  const SizedBox(width: AppSpacing.md),
+              separatorBuilder: (_, _) => const SizedBox(width: AppSpacing.md),
               itemBuilder: (_, _) =>
                   const SkeletonBox(width: AppSizes.questionCardWidth),
             ),
@@ -48,13 +47,12 @@ class HomeSkeleton extends StatelessWidget {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: _categoryPlaceholders,
-              gridDelegate:
-                  const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: AppSpacing.md,
-                    crossAxisSpacing: AppSpacing.md,
-                    childAspectRatio: AppSizes.categoryAspectRatio,
-                  ),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: AppSpacing.md,
+                crossAxisSpacing: AppSpacing.md,
+                childAspectRatio: AppSizes.categoryAspectRatio,
+              ),
               itemBuilder: (_, _) => const SkeletonBox(),
             ),
           ),
