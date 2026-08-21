@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_dimensions.dart';
+import '../../../../core/theme/app_palette.dart';
 
 class PageIndicator extends StatelessWidget {
   const PageIndicator({
@@ -32,8 +32,8 @@ class PageIndicator extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: isActive
-                ? AppColors.indicatorActive
-                : AppColors.indicatorInactive,
+                ? context.palette.indicatorActive
+                : context.palette.indicatorInactive,
           ),
         );
       }),

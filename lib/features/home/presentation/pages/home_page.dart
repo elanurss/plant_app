@@ -8,13 +8,14 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../app/router/app_router.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/di/injection.dart';
-import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_dimensions.dart';
+import '../../../../core/theme/app_palette.dart';
 import '../../../../shared/widgets/app_error_view.dart';
 import '../bloc/home_bloc.dart';
 import '../widgets/category_card.dart';
 import '../widgets/home_bottom_bar.dart';
 import '../widgets/home_header.dart';
+import '../widgets/home_skeleton.dart';
 import '../widgets/plant_search_field.dart';
 import '../widgets/premium_banner.dart';
 import '../widgets/question_card.dart';
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
       value: _bloc,
       child: Scaffold(
         extendBody: true,
-        backgroundColor: AppColors.homeBackground,
+        backgroundColor: context.palette.background,
         body: const SafeArea(bottom: false, child: _HomeBody()),
         bottomNavigationBar: HomeBottomBar(onScanPressed: () {}),
       ),
@@ -96,10 +97,7 @@ class _HomeBody extends StatelessWidget {
                 ),
               ),
               if (state.isLoading)
-                const SliverFillRemaining(
-                  hasScrollBody: false,
-                  child: Center(child: CircularProgressIndicator()),
-                )
+                const SliverToBoxAdapter(child: HomeSkeleton())
               else ...[
                 SliverToBoxAdapter(
                   child: _QuestionCarousel(
@@ -133,7 +131,7 @@ class _SectionTitle extends StatelessWidget {
       AppStrings.categoriesSection,
       style: Theme.of(context).textTheme.headlineMedium?.copyWith(
         fontSize: 20,
-        color: AppColors.textPrimary,
+        color: context.palette.textPrimary,
       ),
     );
   }
@@ -186,9 +184,9 @@ class _CategoryGrid extends StatelessWidget {
           child: Text(
             AppStrings.emptyCategories,
             textAlign: TextAlign.center,
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: context.palette.textSecondary,
+            ),
           ),
         ),
       );

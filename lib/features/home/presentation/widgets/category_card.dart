@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_dimensions.dart';
+import '../../../../core/theme/app_palette.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../shared/widgets/remote_image.dart';
 import '../../domain/entities/plant_category.dart';
@@ -23,9 +23,9 @@ class CategoryCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppRadius.lg),
         child: DecoratedBox(
           decoration: BoxDecoration(
-            color: AppColors.categoryCard,
+            color: context.palette.surface,
             borderRadius: BorderRadius.circular(AppRadius.lg),
-            border: Border.all(color: AppColors.categoryBorder),
+            border: Border.all(color: context.palette.surfaceBorder),
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(AppRadius.lg),
@@ -47,12 +47,18 @@ class CategoryCard extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(AppSpacing.lg),
-                  child: Text(
-                    category.title,
-                    maxLines: 2,
-                    overflow: TextOverflow.fade,
-                    style: AppTextStyles.planTitle.copyWith(
-                      color: AppColors.textPrimary,
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: FractionallySizedBox(
+                      widthFactor: AppSizes.categoryTitleWidthFactor,
+                      child: Text(
+                        category.title,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.planTitle.copyWith(
+                          color: context.palette.textPrimary,
+                        ),
+                      ),
                     ),
                   ),
                 ),

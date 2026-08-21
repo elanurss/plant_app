@@ -4,6 +4,7 @@ import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_dimensions.dart';
+import '../../../../core/theme/app_palette.dart';
 import '../../../../core/theme/app_text_styles.dart';
 
 class HomeBottomBar extends StatelessWidget {
@@ -24,9 +25,9 @@ class HomeBottomBar extends StatelessWidget {
           Container(
             height: AppSizes.navBarHeight + bottomInset,
             padding: EdgeInsets.only(bottom: bottomInset),
-            decoration: const BoxDecoration(
-              color: AppColors.navSurface,
-              border: Border(top: BorderSide(color: AppColors.divider)),
+            decoration: BoxDecoration(
+              color: context.palette.navSurface,
+              border: Border(top: BorderSide(color: context.palette.surfaceBorder)),
             ),
             child: const Row(
               children: [
@@ -85,7 +86,7 @@ class _NavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = isActive ? AppColors.primary : AppColors.navInactive;
+    final color = isActive ? AppColors.primary : context.palette.navInactive;
 
     return Semantics(
       button: true,

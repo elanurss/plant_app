@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../core/constants/app_strings.dart';
 import '../../core/error/app_exception.dart';
-import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_dimensions.dart';
+import '../../core/theme/app_palette.dart';
 
 class AppErrorView extends StatelessWidget {
   const AppErrorView({required this.exception, required this.onRetry, super.key});
@@ -18,17 +18,17 @@ class AppErrorView extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(
+          Icon(
             Icons.wifi_off_rounded,
             size: AppSpacing.xxl,
-            color: AppColors.textSecondary,
+            color: context.palette.textSecondary,
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
             exception.message,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: AppColors.textSecondary,
+              color: context.palette.textSecondary,
             ),
           ),
           const SizedBox(height: AppSpacing.lg),

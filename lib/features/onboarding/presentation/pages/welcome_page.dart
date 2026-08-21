@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../../app/router/app_router.dart';
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_strings.dart';
-import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_dimensions.dart';
+import '../../../../core/theme/app_palette.dart';
 import '../../../../shared/widgets/adaptive_body.dart';
 import '../../../../shared/widgets/illustration_image.dart';
 import '../widgets/legal_notice.dart';
@@ -34,7 +34,7 @@ class WelcomePage extends StatelessWidget {
                   Text(
                     AppStrings.welcomeSubtitle,
                     style: textTheme.bodyLarge?.copyWith(
-                      color: AppColors.textSecondary,
+                      color: context.palette.textSecondary,
                     ),
                   ),
                 ],

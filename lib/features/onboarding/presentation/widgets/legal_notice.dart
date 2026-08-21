@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_strings.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_palette.dart';
 
 class LegalNotice extends StatelessWidget {
   const LegalNotice({super.key});
@@ -10,11 +10,11 @@ class LegalNotice extends StatelessWidget {
   Widget build(BuildContext context) {
     final base = Theme.of(
       context,
-    ).textTheme.labelSmall?.copyWith(color: AppColors.textMuted);
+    ).textTheme.labelSmall?.copyWith(color: context.palette.textMuted);
 
     final link = base?.copyWith(
       decoration: TextDecoration.underline,
-      decorationColor: AppColors.textMuted,
+      decorationColor: context.palette.textMuted,
     );
 
     return Text.rich(

@@ -2,48 +2,47 @@ import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
 import 'app_dimensions.dart';
+import 'app_palette.dart';
 import 'app_text_styles.dart';
 
 abstract final class AppTheme {
   static ThemeData get light => _build(
     brightness: Brightness.light,
-    colorScheme: const ColorScheme.light(
+    palette: AppPalette.light,
+    colorScheme: ColorScheme.light(
       primary: AppColors.primary,
       onPrimary: AppColors.white,
-      surface: AppColors.surface,
-      onSurface: AppColors.textPrimary,
+      surface: AppPalette.light.surface,
+      onSurface: AppPalette.light.textPrimary,
     ),
-    scaffoldBackground: AppColors.background,
-    textColor: AppColors.textPrimary,
   );
 
   static ThemeData get dark => _build(
     brightness: Brightness.dark,
-    colorScheme: const ColorScheme.dark(
+    palette: AppPalette.dark,
+    colorScheme: ColorScheme.dark(
       primary: AppColors.primary,
       onPrimary: AppColors.white,
-      surface: AppColors.darkSurface,
-      onSurface: AppColors.darkTextPrimary,
+      surface: AppPalette.dark.surface,
+      onSurface: AppPalette.dark.textPrimary,
     ),
-    scaffoldBackground: AppColors.darkBackground,
-    textColor: AppColors.darkTextPrimary,
   );
 
   static ThemeData _build({
     required Brightness brightness,
+    required AppPalette palette,
     required ColorScheme colorScheme,
-    required Color scaffoldBackground,
-    required Color textColor,
   }) {
     return ThemeData(
       useMaterial3: true,
       brightness: brightness,
       colorScheme: colorScheme,
-      scaffoldBackgroundColor: scaffoldBackground,
+      scaffoldBackgroundColor: palette.background,
       fontFamily: AppTextStyles.fontFamily,
+      extensions: [palette],
       textTheme: AppTextStyles.textTheme.apply(
-        bodyColor: textColor,
-        displayColor: textColor,
+        bodyColor: palette.textPrimary,
+        displayColor: palette.textPrimary,
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(

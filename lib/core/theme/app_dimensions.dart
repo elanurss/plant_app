@@ -57,6 +57,7 @@ abstract final class AppSizes {
   static const double questionCardWidth = 240;
   static const double questionCardHeight = 160;
   static const double categoryAspectRatio = 1;
+  static const double categoryTitleWidthFactor = 0.7;
   static const double navBarHeight = 80;
   static const double navIcon = 26;
   static const double navActionButton = 66;

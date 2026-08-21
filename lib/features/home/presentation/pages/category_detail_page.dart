@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_dimensions.dart';
+import '../../../../core/theme/app_palette.dart';
 import '../../../../shared/widgets/adaptive_body.dart';
 import '../../../../shared/widgets/remote_image.dart';
 import '../../domain/entities/plant_category.dart';
@@ -17,10 +17,10 @@ class CategoryDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.homeBackground,
+      backgroundColor: context.palette.background,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        foregroundColor: AppColors.textPrimary,
+        foregroundColor: context.palette.textPrimary,
         elevation: 0,
       ),
       body: AdaptiveBody(
@@ -45,7 +45,7 @@ class CategoryDetailPage extends StatelessWidget {
                 category.title,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  color: AppColors.textPrimary,
+                  color: context.palette.textPrimary,
                 ),
               ),
             ),

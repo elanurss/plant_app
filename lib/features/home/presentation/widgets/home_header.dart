@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_strings.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_palette.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({super.key});
@@ -16,13 +16,13 @@ class HomeHeader extends StatelessWidget {
       children: [
         Text(
           AppStrings.homeGreeting,
-          style: textTheme.bodyLarge?.copyWith(color: AppColors.textPrimary),
+          style: textTheme.bodyLarge?.copyWith(color: context.palette.textPrimary),
         ),
         Text(
           AppStrings.homeHeadline,
           style: textTheme.headlineMedium?.copyWith(
             fontSize: 24,
-            color: AppColors.textPrimary,
+            color: context.palette.textPrimary,
           ),
         ),
       ],
