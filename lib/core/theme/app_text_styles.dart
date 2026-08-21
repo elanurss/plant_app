@@ -33,6 +33,18 @@ abstract final class AppTextStyles {
     fontWeight: FontWeight.w400,
   );
 
+  static const TextStyle homeGreeting = TextStyle(
+    fontSize: 24,
+    height: 28 / 24,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle sectionTitle = TextStyle(
+    fontSize: 20,
+    height: 24 / 20,
+    fontWeight: FontWeight.w600,
+  );
+
   static const TextTheme textTheme = TextTheme(
     headlineLarge: headlineRegular,
     headlineMedium: headlineEmphasis,
