@@ -61,4 +61,7 @@ abstract final class AppSizes {
   static const double navBarHeight = 80;
   static const double navIcon = 26;
   static const double navActionButton = 66;
+
+  static const double skeletonTitleWidth = 120;
+  static const double skeletonTitleHeight = 24;
 }

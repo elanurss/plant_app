@@ -34,7 +34,11 @@ class HomeSkeleton extends StatelessWidget {
           const SizedBox(height: AppSpacing.xl),
           const Padding(
             padding: AppSpacing.screenPadding,
-            child: SkeletonBox(width: 120, height: 24, radius: AppRadius.sm),
+            child: SkeletonBox(
+              width: AppSizes.skeletonTitleWidth,
+              height: AppSizes.skeletonTitleHeight,
+              radius: AppRadius.sm,
+            ),
           ),
           const SizedBox(height: AppSpacing.md),
           Padding(

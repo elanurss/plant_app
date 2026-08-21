@@ -11,6 +11,7 @@ import '../../../../core/constants/app_strings.dart';
 import '../../../../core/di/injection.dart';
 import '../../../../core/theme/app_dimensions.dart';
 import '../../../../core/theme/app_palette.dart';
+import '../../../../core/theme/app_text_styles.dart';
 import '../../../../shared/widgets/app_error_view.dart';
 import '../bloc/home_bloc.dart';
 import '../widgets/category_card.dart';
@@ -151,8 +152,7 @@ class _SectionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       AppStrings.categoriesSection,
-      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-        fontSize: 20,
+      style: AppTextStyles.sectionTitle.copyWith(
         color: context.palette.textPrimary,
       ),
     );
