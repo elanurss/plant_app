@@ -16,4 +16,7 @@ abstract final class AppAssets {
 
   static const String featureScan = 'assets/icons/ic_feature_scan.png';
   static const String featureSpeed = 'assets/icons/ic_feature_speed.png';
+
+  static const String homeHeaderLeaves =
+      'assets/images/home_header_leaves.png';
 }

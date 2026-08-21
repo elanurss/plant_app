@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../app/router/app_router.dart';
+import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/di/injection.dart';
 import '../../../../core/theme/app_dimensions.dart';
@@ -79,22 +80,43 @@ class _HomeBody extends StatelessWidget {
           onRefresh: () async => bloc.add(const HomeRefreshed()),
           child: CustomScrollView(
             slivers: [
+              SliverToBoxAdapter(
+                child: ClipRect(
+                  child: Stack(
+                    children: [
+                      Positioned.fill(
+                        child: Image.asset(
+                          AppAssets.homeHeaderLeaves,
+                          fit: BoxFit.cover,
+                          alignment: Alignment.topCenter,
+                        ),
+                      ),
+                      Padding(
+                        padding: AppSpacing.screenPadding.copyWith(
+                          top: AppSpacing.xl,
+                          bottom: AppSpacing.xl,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            const HomeHeader(),
+                            const SizedBox(height: AppSpacing.xl),
+                            PlantSearchField(
+                              onChanged: (query) =>
+                                  bloc.add(HomeSearchChanged(query)),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               SliverPadding(
                 padding: AppSpacing.screenPadding.copyWith(
-                  top: AppSpacing.xl,
                   bottom: AppSpacing.xl,
                 ),
-                sliver: SliverList.list(
-                  children: [
-                    const HomeHeader(),
-                    const SizedBox(height: AppSpacing.xl),
-                    PlantSearchField(
-                      onChanged: (query) => bloc.add(HomeSearchChanged(query)),
-                    ),
-                    const SizedBox(height: AppSpacing.xl),
-                    PremiumBanner(onTap: () {}),
-                  ],
-                ),
+                sliver: SliverToBoxAdapter(child: PremiumBanner(onTap: () {})),
               ),
               if (state.isLoading)
                 const SliverToBoxAdapter(child: HomeSkeleton())
