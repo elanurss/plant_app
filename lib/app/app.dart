@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../core/di/injection.dart';
+import '../core/theme/app_dimensions.dart';
 import '../core/theme/app_theme.dart';
 import 'router/app_router.dart';
 
@@ -23,6 +24,14 @@ class _PlantAppState extends State<PlantApp> {
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.light,
       routerConfig: _router.config(),
+      builder: (context, child) => MediaQuery.withClampedTextScaling(
+        maxScaleFactor: AppSizes.maxTextScale,
+        child: GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+          child: child ?? const SizedBox.shrink(),
+        ),
+      ),
     );
   }
 }

@@ -11,6 +11,53 @@
 part of 'app_router.dart';
 
 /// generated route for
+/// [CategoryDetailPage]
+class CategoryDetailRoute extends PageRouteInfo<CategoryDetailRouteArgs> {
+  CategoryDetailRoute({
+    required PlantCategory category,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+         CategoryDetailRoute.name,
+         args: CategoryDetailRouteArgs(category: category, key: key),
+         initialChildren: children,
+       );
+
+  static const String name = 'CategoryDetailRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<CategoryDetailRouteArgs>();
+      return CategoryDetailPage(category: args.category, key: args.key);
+    },
+  );
+}
+
+class CategoryDetailRouteArgs {
+  const CategoryDetailRouteArgs({required this.category, this.key});
+
+  final PlantCategory category;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'CategoryDetailRouteArgs{category: $category, key: $key}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! CategoryDetailRouteArgs) return false;
+    return category == other.category && key == other.key;
+  }
+
+  @override
+  int get hashCode => category.hashCode ^ key.hashCode;
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
